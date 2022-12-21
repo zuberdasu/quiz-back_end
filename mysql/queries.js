@@ -1,9 +1,9 @@
 const queries = {
-  createUser: (name, email, password) => {
+  createUser: (firstName, surname, email, password) => {
     return `INSERT IGNORE users 
-                    (name, email, password)
+                    (first_name, surname, email, password)
                          VALUES
-                            ("${name}", "${email}", "${password}");`;
+                            ( "${firstName}","${surname}","${email}", "${password}");`;
   },
 
   checkCreds: (email, password) => {
