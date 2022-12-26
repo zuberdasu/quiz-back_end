@@ -3,6 +3,7 @@ const { createUser } = require("../mysql/queries");
 const router = express.Router();
 //const { getUniqueId } = require("../utils");
 const sha256 = require("sha256");
+const sendEmail = require("../email/sib");
 
 router.post("/", async (req, res) => {
   console.log("create request received");
@@ -20,6 +21,12 @@ router.post("/", async (req, res) => {
     );
 
     if (result.affectedRows === 1) {
+      //send a welcome email
+      sendEmail(
+        email,
+        "Welcome to GCSE Computer Science",
+        `Hi ${first_name}, thank you for creating an account, we hope this site helps you to revise and succeed.`
+      );
       res.send({ status: 1 });
     } else {
       res.send({ status: 0, error: "Duplicate entry" });
