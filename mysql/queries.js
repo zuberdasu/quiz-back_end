@@ -32,6 +32,16 @@ const queries = {
                 JOIN questions ON
                   topics.id = questions.topic_id;`;
   },
+
+  addScore: (token, score, topic) => {
+    return `INSERT INTO scores (score, user_id, topic_id) 
+
+    SELECT "${score}", logins.user_id, topics.id
+      FROM logins
+          JOIN topics 
+              ON topics.name = "${topic}"
+                WHERE token = "${token}";`;
+  },
 };
 
 module.exports = queries;

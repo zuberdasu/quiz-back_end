@@ -42,9 +42,9 @@ app.use((req, res, next) => {
 //app.use("/delete", require("./routes/delete"));
 app.use("/read", require("./routes/read"));
 app.use("/create", require("./routes/create"));
-//app.use("/update", require("./routes/update"));
 app.use("/login", require("./routes/login"));
 app.use("/logoff", require("./routes/logoff"));
+app.use("/addScore", require("./routes/addScore"));
 
 const port = process.env.PORT || 6001;
 app.listen(port, () => {
