@@ -45,6 +45,7 @@ app.use("/create", require("./routes/create"));
 app.use("/login", require("./routes/login"));
 app.use("/logoff", require("./routes/logoff"));
 app.use("/addScore", require("./routes/addScore"));
+app.use("/readScores", require("./routes/readScores"));
 
 const port = process.env.PORT || 6001;
 app.listen(port, () => {

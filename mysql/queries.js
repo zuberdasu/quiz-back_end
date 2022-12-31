@@ -42,11 +42,20 @@ const queries = {
               ON topics.name = "${topic}"
                 WHERE token = "${token}";`;
   },
+
+  getUserId: (token) => {
+    return `SELECT user_id FROM logins
+              WHERE token = "${token}";`;
+  },
+  getTopicId: (topic) => {
+    return `SELECT id FROM topics
+              WHERE name = "${topic}";`;
+  },
+  getScores: (userId, topicId) => {
+    return `SELECT MAX(score) FROM scores
+    	        WHERE user_id = "${userId}"
+        	      AND topic_id = "${topicId}";`;
+  },
 };
 
 module.exports = queries;
-
-// WHERE topics.name = "${topic}";`;
-//JOIN answers ON
-//                    questions.id = answers.question_id;`;
-//

@@ -19,7 +19,7 @@ connection.connect();
 
 function asyncMySQL(query) {
   return new Promise((resolve, reject) => {
-    //console.log(query);
+    //console.log("22", query);
     connection.query(query, (error, results) => {
       if (error) {
         console.log(
@@ -30,6 +30,7 @@ function asyncMySQL(query) {
       }
 
       resolve(results);
+      //console.log("33", results);
     });
   });
 }
