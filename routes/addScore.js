@@ -3,14 +3,13 @@ const { addScore } = require("../mysql/queries");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  console.log("add score request received");
-  console.log(req.body);
   let { token, score, topic } = req.body;
 
   //check we have all the data
   if (token && score && topic) {
     const result = await req.asyncMySQL(addScore(token, score, topic));
 
+    //check if score has correctly been added
     if (result.affectedRows === 1) {
       res.send({ status: 1 });
     } else {

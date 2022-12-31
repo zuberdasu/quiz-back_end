@@ -1,20 +1,15 @@
 const express = require("express");
 const { createUser } = require("../mysql/queries");
 const router = express.Router();
-//const { getUniqueId } = require("../utils");
 const sha256 = require("sha256");
 const sendEmail = require("../email/sib");
 
 router.post("/", async (req, res) => {
-  console.log("create request received");
-  console.log(req.body);
   let { first_name, surname, email, password } = req.body;
 
   //check we have all the data
   if (first_name && surname && email && password) {
-    //password = sha256(process.env.SALT + password);
-    //console.log(password);
-    password = sha256(password);
+    password = sha256(process.env.SALT + password);
 
     const result = await req.asyncMySQL(
       createUser(first_name, surname, email, password)

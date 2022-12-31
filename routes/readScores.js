@@ -2,7 +2,7 @@ const express = require("express");
 const { getUserId, getTopicId, getScores } = require("../mysql/queries");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   let { token, topic } = req.body;
 
   if (token && topic) {

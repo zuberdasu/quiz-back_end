@@ -26,7 +26,7 @@ const queries = {
     return `DELETE FROM logins
                 WHERE token = "${token}";`;
   },
-  getQuestions: (topic) => {
+  getQuestions: () => {
     return `SELECT name, question, questions.id
               FROM topics
                 JOIN questions ON

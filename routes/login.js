@@ -10,12 +10,8 @@ router.post("/", async (req, res) => {
   if (!email || !password) {
     res.send({ status: 0, error: "Invalid input data" });
   }
-  // console.log("Salt", process.env.SALT);
 
-  //password = sha256(process.env.SALT + password);
-  //console.log(password, "login");
-  password = sha256(password);
-
+  password = sha256(process.env.SALT + password);
   const results = await req.asyncMySQL(checkCreds(email, password));
 
   //if creds do not match
