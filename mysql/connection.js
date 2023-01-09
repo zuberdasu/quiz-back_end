@@ -5,14 +5,10 @@ console.log(process.env.DB_USER);
 const connection = mysql.createConnection({
   port: 3306,
 
-  //database: process.env.DB_DATABASE,
-  //user: process.env.DB_USER,
-  //password: process.env.DB_PASSWORD,
-  //host: process.env.DB_HOST,
-  database: "gcse_quiz",
-  user: "root",
-  password: "",
-  host: "localhost",
+  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
 });
 
 connection.connect();
